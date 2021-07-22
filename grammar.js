@@ -1,10 +1,19 @@
 const opt_seq = (...rules) => optional(seq(...rules))
+const delim1 = (del, rule) => seq(rule, repeat(seq(del, rule)))
+const delim = (del, rule) => optional(delim1(del, rule))
+const SEQ_SEP = /\n+|,/
+const optNls = repeat('\n')
+const delSeq = rule => seq(
+    delim(SEQ_SEP, rule),
+    optional(SEQ_SEP),
+)
 
 module.exports = grammar({
     name: 'jon',
 
     extras: $ => [
         $.comment,
+        /\s/,
     ],
 
     conflicts: $ => [],
@@ -12,18 +21,18 @@ module.exports = grammar({
     inline: $ => [],
 
     rules: {
-        source_file: $ => repeat($._object),
-
-        _object: $ => repeat($.key_value),
+        document: $ => delSeq($.key_value),
 
         key_value: $ => seq(
             $._key,
+            optNls,
             ':',
+            optNls,
             $._value,
         ),
 
         _key: $ => choice(
-            /^(?!:).*$/, // Any text without `:`
+            /[a-zA-Z0-9_$]+/, // Any text without `:`
             $.string,
         ),
 
@@ -58,20 +67,22 @@ module.exports = grammar({
         string: $ => seq(
             choice('"', '\''),
             repeat(
-                token.immediate(prec(1, /[^\\"\n]+/)),
+                token.immediate(prec(1, /[^\\\n'"]+/)),
             ),
             choice('"', '\''),
         ),
 
         array: $ => seq(
             '[',
-            repeat($._value),
-            ']'
+            optNls,
+            delSeq($._value),
+            ']',
         ),
 
         object: $ => seq(
             '{',
-            $._object,
+            optNls,
+            delSeq($.key_value),
             '}',
         ),
 

@@ -2,7 +2,7 @@
   "name": "@jacy-lang/jon",
   "version": "0.0.1",
   "description": "Jacy programming language Object Notation",
-  "main": "index.js",
+  "main": "bindings/node",
   "scripts": {
     "build": "tree-sitter generate && node-gyp build",
     "config": "node-gyp configure --release --verbose --python=python2 --target=$(node --version)",
