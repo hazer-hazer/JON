@@ -1,0 +1,32 @@
+{
+  "name": "@jacy-lang/jon",
+  "version": "0.0.1",
+  "description": "Jacy programming language Object Notation",
+  "main": "index.js",
+  "scripts": {
+    "build": "tree-sitter generate && node-gyp build",
+    "config": "node-gyp configure --release --verbose --python=python2 --target=$(node --version)",
+    "dev": "npm run config && npm run build && tree-sitter generate && tree-sitter test",
+    "test": "tree-sitter test && tree-sitter parse examples/* --time"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hazer-hazer/JON.git"
+  },
+  "keywords": [
+    "tree-sitter",
+    "jacy",
+    "jacy-lang",
+    "jon"
+  ],
+  "author": "hazer-hazer",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hazer-hazer/JON/issues"
+  },
+  "homepage": "https://github.com/hazer-hazer/JON#readme",
+  "devDependencies": {
+    "tree-sitter": "^0.19.0"
+  },
+  "dependencies": {}
+}
