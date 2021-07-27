@@ -16,7 +16,7 @@ multiline: """
 Multiline strings are enclosed into
 - '''
 - or """
-"""
+\"""
 
 'Key can be a string': 'Value'
 
