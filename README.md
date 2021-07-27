@@ -2,7 +2,7 @@
 
 JON (Jacy Object Notation) is an alternative for JSON used by *Jacy* programming language.
 
-> Note: JON grammar for different IDEs are inside Jacy packages for IDEs.
+> Note: JON grammars for different IDEs are inside Jacy packages for IDEs.
 
 Example:
 ```yaml
