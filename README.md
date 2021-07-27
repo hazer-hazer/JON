@@ -15,8 +15,8 @@ string2: "Either single or double"
 multiline: """
 Multiline strings are enclosed into
 - '''
-- or """
-\"""
+- or \"\"\"
+"""
 
 'Key can be a string': 'Value'
 
