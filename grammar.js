@@ -21,7 +21,10 @@ module.exports = grammar({
     inline: $ => [],
 
     rules: {
-        document: $ => delSeq($.key_value),
+        document: $ => choice(
+            delSeq($.key_value),
+            $._value,
+        ),
 
         key_value: $ => seq(
             $._key,
