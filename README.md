@@ -13,10 +13,12 @@ string: 'String is enclosed into quotes'
 string2: "Either single or double"
 
 multiline: """
-Multiline strings are enclosed into
-- '''
-- or \"\"\"
+Multiline strings are enclosed into triple double quotes
 """
+
+multiline2: '''
+or in triple single quotes
+'''
 
 'Key can be a string': 'Value'
 
