@@ -2,6 +2,8 @@
 
 JON (Jacy Object Notation) is an alternative for JSON used by *Jacy* programming language.
 
+> Note: JON grammar for different IDEs are inside Jacy packages for IDEs.
+
 Example:
 ```yaml
 // JON Supports C-style comments
@@ -54,11 +56,9 @@ nope: false
 nothing: null
 ```
 
-> Note: JON grammar for different IDEs are inside Jacy packages for IDEs.
-
 ## Specification
 
-JON does not specify mostly anything except grammar, client (implementation) need to handle everything else, including numbers size limit, etc.
+JON does not specify mostly anything except grammar, client (implementation) needs to handle everything else, including numbers size limit, etc.
 
 ### Constants
 
@@ -68,10 +68,9 @@ Implementation is considered valid if `true`, `false` and `null` corresponds to 
 
 #### `null` value
 
-`null` must not differ in implementations in the way of processing it, if `null` appears as value -- it must exists in structure. `null` is not "undefined", it is a "none" value.
-
+`null` must not differ in implementations in the way of processing it, if `null` appears as value -- it must exist in the representation of source code. `null` is not "undefined", it is a "none" value, thus appearance of `null` does not mean that value can be omitted.
 
 ### Numbers
 
 JON does not require any limitation for numbers, grammatically valid number can be of any length.
-Each implementation able to handle size by itself and should do it. 
+Each implementation need to handle size by itself and should do it. 
